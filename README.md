@@ -69,5 +69,4 @@ The goal is to identify actionable insights that improve retention, drive clinic
 
 1. Download `dashboard.html`
 2. Open in Chrome or Edge
-3. All charts are embedded and will display automatically to regenerate the model and charts.
-
+3. All charts are embedded and will display automatically
