@@ -14,21 +14,55 @@ The goal is to identify actionable insights that improve retention, drive clinic
 
 ## Data Quality & Preparation
 
-To ensure the accuracy and reliability of the analysis and ROI model, three primary data quality challenges were addressed:
+To ensure the accuracy and reliability of the analysis and ROI model, a structured approach was used to handle temporal consistency, missing data, and outcome measurement.
 
-1. Handling Null Engagement
-   - Used 'LEFT JOINs' when merging datasets to retain all members, including inactive users  
-   - Prevented survivor bias, ensuring disengaged members were included in retention and outcome analysis  
+1. Baseline-to-Outcome Methodology (Temporal Integrity)
+Instead of using all time-series data points, we focused on the most stable and comparable observations:
 
-2. Clinical Outlier Removal
-   - Filtered biometric data (HbA1c, BMI, blood pressure) to **physiologically valid ranges**  
-   - Prevented extreme values from skewing clinical outcome metrics  
+- Extracted the **first recorded value** per member as the baseline
+- Extracted the **last recorded value** as the outcome
+- Ignored intermediate fluctuations to reduce noise
 
-3. Chronological Alignment
-   - Standardized multiple time-series datasets (daily, weekly, monthly) into **monthly cohorts**  
-   - Enabled consistent Baseline vs. Latest comparisons for measuring clinical improvement  
+This approach ensures that clinical improvement is measured as a **true net change over time**, rather than short-term variability.
 
-These steps ensured that insights and ROI calculations reflect realistic and actionable outcomes.
+
+2. Handling Missing Outcome Data (Intent-to-Treat Approach)
+Not all members have complete follow-up data (e.g., missing second biomarker readings).
+
+To avoid inflating results:
+
+- A **LEFT JOIN** was used when merging biomarker outcomes
+- Members without a follow-up reading were **retained in the dataset**
+- These members were treated as **"No Improvement"**
+
+This conservative approach follows an **intent-to-treat principle**, ensuring ROI is not overstated due to missing data.
+
+
+3. Chronological Alignment Across Datasets
+The dataset contained multiple time granularities (daily, weekly, monthly).
+
+To ensure consistency:
+
+- All activity, engagement, and biomarker data were aligned into monthly cohorts.
+- This enabled consistent Baseline vs. Latest comparisons.
+- Allowed for accurate retention and outcome measurement over time.
+
+
+4. Risk Tier Validation (Logical Consistency Check)
+Members were segmented into 'Low, Moderate, and High Risk tiers' using clinical indicators.
+
+- Risk classification provided a 'sanity check' on the data.
+- Extreme values naturally map to higher-risk categories.
+- Ensures that outcome comparisons are 'clinically meaningful and comparable'.
+
+Summary
+
+This approach prioritizes:
+- Temporal consistency (baseline vs outcome)
+- Conservative outcome estimation (intent-to-treat)
+- Comparability across members (cohort alignment)
+
+As a result, the analysis produces robust, realistic, and decision-ready insights for both clinical impact and ROI.
 
 ## Deliverables
 
