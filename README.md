@@ -31,7 +31,7 @@ Not all members have complete follow-up data (e.g., missing second biomarker rea
 
 To avoid inflating results:
 
-- A 'LEFT JOIN' was used when merging biomarker outcomes
+- I used a 'LEFT JOIN' when merging biomarker outcomes.
 - Members without a follow-up reading were retained in the dataset'.
 - These members were treated as 'No Improvement'.
 
