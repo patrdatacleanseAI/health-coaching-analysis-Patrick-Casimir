@@ -1,7 +1,7 @@
 # Health Coaching Modeling Analysis Platform — Member Engagement & Outcomes  — Submission by Patrick Casimir
 
 ## Overview
-This project analyzes member engagement, retention, and clinical outcomes for a digital health coaching platform.
+This project, I analyze member engagement, retention, and clinical outcomes for a digital health coaching platform.
 The goal is to identify actionable insights that improve retention, drive clinical improvement, and maximize ROI.
 
 
@@ -14,14 +14,14 @@ The goal is to identify actionable insights that improve retention, drive clinic
 
 ## Data Quality & Preparation
 
-To ensure the accuracy and reliability of the analysis and ROI model, a structured approach was used to handle temporal consistency, missing data, and outcome measurement.
+To ensure the accuracy and reliability of the analysis and ROI model, I used a structured approach to handle temporal consistency, missing data, and outcome measurement.
 
 1. Baseline-to-Outcome Methodology (Temporal Integrity)
-Instead of using all time-series data points, we focused on the most stable and comparable observations:
+Instead of using all time-series data points, I focused on the most stable and comparable observations:
 
-- Extracted the 'first recorded value' per member as the baseline.
-- Extracted the 'last recorded value' as the outcome.
-- Ignored intermediate fluctuations to reduce noise.
+- I extracted the 'first recorded value' per member as the baseline.
+- I extracted the 'last recorded value' as the outcome.
+- I ignored intermediate fluctuations to reduce noise.
 
 This approach ensures that clinical improvement is measured as a 'true net change over time', rather than short-term variability.
 
