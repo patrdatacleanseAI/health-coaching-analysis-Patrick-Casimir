@@ -19,11 +19,11 @@ To ensure the accuracy and reliability of the analysis and ROI model, a structur
 1. Baseline-to-Outcome Methodology (Temporal Integrity)
 Instead of using all time-series data points, we focused on the most stable and comparable observations:
 
-- Extracted the **first recorded value** per member as the baseline
-- Extracted the **last recorded value** as the outcome
-- Ignored intermediate fluctuations to reduce noise
+- Extracted the 'first recorded value' per member as the baseline.
+- Extracted the 'last recorded value' as the outcome.
+- Ignored intermediate fluctuations to reduce noise.
 
-This approach ensures that clinical improvement is measured as a **true net change over time**, rather than short-term variability.
+This approach ensures that clinical improvement is measured as a 'true net change over time', rather than short-term variability.
 
 
 2. Handling Missing Outcome Data (Intent-to-Treat Approach)
@@ -31,11 +31,11 @@ Not all members have complete follow-up data (e.g., missing second biomarker rea
 
 To avoid inflating results:
 
-- A **LEFT JOIN** was used when merging biomarker outcomes
-- Members without a follow-up reading were **retained in the dataset**
-- These members were treated as **"No Improvement"**
+- A 'LEFT JOIN' was used when merging biomarker outcomes
+- Members without a follow-up reading were retained in the dataset'.
+- These members were treated as 'No Improvement'.
 
-This conservative approach follows an **intent-to-treat principle**, ensuring ROI is not overstated due to missing data.
+This conservative approach follows an 'intent-to-treat principle', ensuring ROI is not overstated due to missing data.
 
 
 3. Chronological Alignment Across Datasets
