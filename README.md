@@ -147,14 +147,14 @@ The data was production-ready and required no aggressive preprocessing prior to 
 
 # Prioritized Recommendations
 
-1. **Implement a Day-21 Intervention Trigger**
+1. **Implement a Day-21 Intervention Trigger** (Chart 1)
    - Detect disengagement within the first 3–4 weeks
    - Trigger automated nudges and coach outreach
 
-2. **Cap High-Risk Intervention Cost at $300**
+2. **Cap High-Risk Intervention Cost at $300** (Model ROI)
    - Maintain positive ROI while targeting the highest-impact segment
 
-3. **Promote 7,000 Daily Steps as a Behavioral Anchor**
+3. **Promote 7,000 Daily Steps as a Behavioral Anchor** (Chart 4)
    - Use nudges and incentives to reinforce sustainable engagement
 
 
