@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project analyzes member engagement, retention, and clinical outcomes for a digital health coaching platform serving ~10,000 members managing chronic conditions.
+In this project, I analyze member engagement, retention, and clinical outcomes for a digital health coaching platform serving ~10,000 members managing chronic conditions.
 
 The objective was to identify:
 
@@ -27,7 +27,6 @@ The final deliverable includes an interactive dashboard, ROI model, and structur
 
 A comprehensive data audit was conducted before modeling and analysis.
 
----
 
 ## 1. Missing Value Assessment (Source Tables)
 
