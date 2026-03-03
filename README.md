@@ -27,7 +27,7 @@ The final deliverable included an interactive dashboard, ROI model, and structur
 A comprehensive data audit was conducted before modeling and analysis.
 
 
-## 1. Missing Value Assessment (Source Tables)
+## 1. Missing Value Assessment 
 
 Each dataset was evaluated independently for null density.
 
@@ -41,7 +41,7 @@ Results:
 The NaN values observed during cross-table concatenation reflect schema differences between datasets and do not represent missing data within individual tables.
 
 
-## 2. Nutrition Feature Missingness (Post-Integration)
+## 2. Nutrition Feature Missingness 
 
 After aggregating nutrition logs and left-joining them into the unified member-level dataset, ~2.06% missing values were detected across nutrition features:
 
