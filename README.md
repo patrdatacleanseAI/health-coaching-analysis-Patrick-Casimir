@@ -77,10 +77,9 @@ Biometric measures were evaluated against reasonable physiological thresholds:
 No out-of-range clinical values were identified.
 
 
-Nutrition Feature Missingness (Post-Integration)
+7. Nutrition Feature Missingness (Amputation)
 
 A post-merge feature audit revealed ~2.06% missing values across engineered nutrition variables.
-
 This occurred because some members did not log nutrition activity during the observation window. When nutrition aggregates were left-joined onto the member-level dataset, those members produced null feature values.
 
 To address this:
