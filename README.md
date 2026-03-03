@@ -1,9 +1,8 @@
 # Health Coaching Modeling Analysis Platform — Member Engagement & Outcomes  — Submission by Patrick Casimir
 
-
 ## Overview
 
-In this project, I analyze member engagement, retention, and clinical outcomes for a digital health coaching platform serving ~10,000 members managing chronic conditions.
+In this project, I analyzed member engagement, retention, and clinical outcomes for a digital health coaching platform serving ~10,000 members managing chronic conditions.
 
 The objective was to identify:
 
@@ -11,7 +10,7 @@ The objective was to identify:
 - Predictors of meaningful clinical improvement
 - Levers that maximize ROI for leadership
 
-The final deliverable includes an interactive dashboard, ROI model, and structured insights for executive decision-making.
+The final deliverable included an interactive dashboard, ROI model, and structured insights for executive decision-making.
 
 
 ## Tools Used
