@@ -11,58 +11,38 @@ The goal is to identify actionable insights that improve retention, drive clinic
 - HTML for dashboard delivery
 - GitHub for version control and submission
 
+## Data Quality & Structural Validation
 
-## Data Quality & Preparation
+A data quality audit was conducted across all five datasets following consolidation.
 
-To ensure the accuracy and reliability of the analysis and ROI model, I used a structured approach to handle temporal consistency, missing data, and outcome measurement.
+Missing Data Assessment
 
-1. Baseline-to-Outcome Methodology (Temporal Integrity)
-Instead of using all time-series data points, I focused on the most stable and comparable observations:
+- 0% missing across demographics, biomarkers, engagement, activity, and derived outcome variables.
+- ~2.06% missing across nutrition variables only (calories and macronutrients).
 
-- I extracted the 'first recorded value' per member as the baseline.
-- I extracted the 'last recorded value' as the outcome.
-- I ignored intermediate fluctuations to reduce noise.
+The limited missingness was isolated to nutrition logging and does not materially impact clinical outcome calculations.
 
-This approach ensures that clinical improvement is measured as a 'true net change over time', rather than short-term variability.
-
-
-2. Handling Missing Outcome Data (Intent-to-Treat Approach)
-Not all members have complete follow-up data (e.g., missing second biomarker readings).
-
-To avoid inflating results:
-
-- I used a 'LEFT JOIN' when merging biomarker outcomes.
-- Members without a follow-up reading were retained in the dataset'.
-- These members were treated as 'No Improvement'.
-
-This conservative approach follows an 'intent-to-treat principle', ensuring ROI is not overstated due to missing data.
+Nutrition nulls were treated as zero logged intake, preserving all members in the dataset without requiring imputation.
 
 
-3. Chronological Alignment Across Datasets
-The dataset contained multiple time granularities (daily, weekly, monthly).
+Duplicate Record Validation
 
-To ensure consistency:
+A duplicate audit was performed at the full-row level across all datasets.
 
-- All activity, engagement, and biomarker data were aligned into monthly cohorts.
-- This enabled consistent Baseline vs. Latest comparisons.
-- Allowed for accurate retention and outcome measurement over time.
+- 0% duplicate rows detected in members, biomarkers, engagement, activity, or nutrition tables.
+
+Each dataset maintained structural integrity at its intended grain (member-level or time-series level).
 
 
-4. Risk Tier Validation (Logical Consistency Check)
-Members were segmented into 'Low, Moderate, and High Risk tiers' using clinical indicators.
+Summary of Dataset Integrity
 
-- Risk classification provided a 'sanity check' on the data.
-- Extreme values naturally map to higher-risk categories.
-- Ensures that outcome comparisons are 'clinically meaningful and comparable'.
+- High completeness (≈98–100%)
+- No duplication
+- Stable baseline and outcome values available for all members
+- No row deletions required
 
-Summary
+The dataset was production-ready for modeling without aggressive preprocessing.
 
-This approach prioritizes:
-- Temporal consistency (baseline vs outcome)
-- Conservative outcome estimation (intent-to-treat)
-- Comparability across members (cohort alignment)
-
-As a result, the analysis produces robust, realistic, and decision-ready insights for both clinical impact and ROI.
 
 ## Deliverables
 
