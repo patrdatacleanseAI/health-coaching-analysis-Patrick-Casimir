@@ -13,36 +13,81 @@ The goal is to identify actionable insights that improve retention, drive clinic
 
 ## Data Quality & Structural Validation
 
-A data quality audit was conducted across all five datasets following consolidation.
+A comprehensive data quality audit was performed across all five source datasets prior to modeling.
 
-Missing Data Assessment
+1. Missing Value Assessment
 
-- 0% missing across demographics, biomarkers, engagement, activity, and derived outcome variables.
+Each dataset was evaluated independently for null density.
+
+- 0% missing across members, biomarkers, engagement, and activity tables.
 - ~2.06% missing across nutrition variables only (calories and macronutrients).
 
-The limited missingness was isolated to nutrition logging and does not materially impact clinical outcome calculations.
+The NaN values observed during schema concatenation reflect structural differences between tables and do not indicate missing data within individual datasets.
 
-Nutrition nulls were treated as zero logged intake, preserving all members in the dataset without requiring imputation.
-
-
-Duplicate Record Validation
-
-A duplicate audit was performed at the full-row level across all datasets.
-
-- 0% duplicate rows detected in members, biomarkers, engagement, activity, or nutrition tables.
-
-Each dataset maintained structural integrity at its intended grain (member-level or time-series level).
+Given the low and isolated missingness in nutrition logging, affected records were retained. No imputation or row deletion was required.
 
 
-Summary of Dataset Integrity
+2. Duplicate Record Audit
 
-- High completeness (≈98–100%)
-- No duplication
-- Stable baseline and outcome values available for all members
-- No row deletions required
+Full-row duplicate checks were performed across all datasets:
 
-The dataset was production-ready for modeling without aggressive preprocessing.
+- Members: 0 duplicates  
+- Biomarkers: 0 duplicates  
+- Engagement: 0 duplicates  
+- Activity: 0 duplicates  
+- Nutrition: 0 duplicates  
 
+No duplication was detected.
+
+
+3. Grain Integrity Validation
+
+Each dataset was validated against its intended grain:
+
+- Members: 1 row per `member_id`
+- Biomarkers: unique by (`member_id`, `reading_date`)
+- Activity: unique by (`member_id`, `date`)
+- Engagement: unique by (`member_id`, `week_start`)
+- Nutrition: unique by (`member_id`, `log_date`)
+
+No grain violations were found.
+
+
+4. Referential Integrity
+
+Foreign key relationships were validated:
+
+- No orphan records detected
+- All time-series tables correctly map to valid `member_id` values
+
+
+5. Temporal Integrity
+
+- No activity records occurred before a member’s `signup_date`
+- Chronological consistency confirmed across datasets
+
+
+6. Logical Clinical Validation
+
+Biometric measures were evaluated against reasonable physiological thresholds:
+
+- HbA1c within valid clinical bounds
+- BMI within plausible human range
+- Systolic blood pressure within valid limits
+
+No out-of-range clinical values were identified.
+
+Summary
+
+The dataset demonstrates:
+
+- High completeness
+- Zero duplication
+- Strong structural and referential integrity
+- Valid chronological sequencing
+- Clinically plausible measurements
+
+The data was production-ready and required no aggressive preprocessing prior to analysis.
 
 ## Deliverables
 
