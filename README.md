@@ -23,7 +23,6 @@ Each dataset was evaluated independently for null density.
 - ~2.06% missing across nutrition variables only (calories and macronutrients).
 
 The NaN values observed during schema concatenation reflect structural differences between tables and do not indicate missing data within individual datasets.
-
 Given the low and isolated missingness in nutrition logging, affected records were retained. No imputation or row deletion was required.
 
 
@@ -77,6 +76,21 @@ Biometric measures were evaluated against reasonable physiological thresholds:
 
 No out-of-range clinical values were identified.
 
+
+Nutrition Feature Missingness (Post-Integration)
+
+A post-merge feature audit revealed ~2.06% missing values across engineered nutrition variables.
+
+This occurred because some members did not log nutrition activity during the observation window. When nutrition aggregates were left-joined onto the member-level dataset, those members produced null feature values.
+
+To address this:
+
+- Missing nutrition aggregates were set to 0 (interpreted as no logged intake)
+- A binary indicator `has_nutrition_logs` was created to preserve behavioral signal
+- No rows were removed
+
+This approach preserves the full cohort, avoids survivor bias, and ensures ROI calculations are not artificially inflated by excluding low-engagement members.
+
 Summary
 
 The dataset demonstrates:
@@ -88,6 +102,7 @@ The dataset demonstrates:
 - Clinically plausible measurements
 
 The data was production-ready and required no aggressive preprocessing prior to analysis.
+
 
 ## Deliverables
 
